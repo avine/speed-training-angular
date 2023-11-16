@@ -1,5 +1,9 @@
 <div class="my-5 container">
-  <h1>Hello, {{ title }}</h1>
+  <h1 appHighlight>Hello, {{ title }}</h1>
+
+  <h2 [appHighlight]="'green'">Hello, {{ title }}</h2>
+
+  <p [style.background-color]="'yellow'" (mouseover)="log($event)" (focus)="($event)">AAA</p>
 
   <router-outlet></router-outlet>
 </div>
