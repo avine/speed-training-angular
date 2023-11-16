@@ -1,5 +1,31 @@
 <div class="my-5 container">
-  <h1>Hello, {{ title }}</h1>
+  <button (click)="bool = !bool" class="btn">Toggle {{ bool }}</button>
 
-  <router-outlet></router-outlet>
+  <h1 *ngIf="bool">Hello</h1>
+
+  <ng-template [ngIf]="bool">
+    <h1>Hello world!</h1>
+  </ng-template>
+
+  <h2 *appFoo="5">FOO</h2>
+
+  <hr />
+
+  <ng-container [ngTemplateOutlet]="tmpl" [ngTemplateOutletContext]="{ abc: 'ABC', $implicit: 'IMPLICIT 1' }" />
+
+  <ng-container [ngTemplateOutlet]="tmpl" [ngTemplateOutletContext]="{ abc: 'DEF', $implicit: 'IMPLICIT 2' }" />
+
+  <hr />
+
+  <ng-template #tmpl let-title="abc" let-xyz>
+    <h3>---{{ title }}</h3>
+    <p>{{ xyz }}</p>
+  </ng-template>
+
+  <hr />
+  <hr />
+  <hr />
+  <hr />
+
+  <app-demo [theTmpl]="tmpl" />
 </div>
