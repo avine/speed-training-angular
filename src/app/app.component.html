@@ -1,5 +1,10 @@
 <div class="my-5 container">
   <h1>Hello, {{ title }}</h1>
 
-  <router-outlet></router-outlet>
+  <p>{{ appDate | date }}</p>
+  <p>{{ price | currency: 'EUR' : 'code' }}</p>
+
+  <h2>{{ array | fancy: ' / ' }}</h2>
+
+  <button (click)="array.push('Z')">Mutation</button>
 </div>
