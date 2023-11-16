@@ -1,5 +1,39 @@
 <div class="my-5 container">
   <h1>Hello, {{ title }}</h1>
 
-  <router-outlet></router-outlet>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+      <input
+        [formControl]="formGroup.controls.email"
+        type="email"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="name@example.com"
+        [class.is-valid]="formGroup.controls.email.valid"
+        [class.is-invalid]="formGroup.controls.email.touched && formGroup.controls.email.invalid"
+      />
+      @if (formGroup.controls.email.hasError('email')) {
+        <div class="invalid-feedback">Email invalide</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+      <textarea
+        [formControl]="formGroup.controls.message"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <button class="btn btn-primary" [disabled]="formGroup.invalid">Submit</button>
+  </form>
 </div>
+
+<pre>{{ formGroup.value | json }}</pre>
+
+<pre>{{ formGroup.controls.email.errors | json }}</pre>
+
+<pre>{{ formGroup.controls.message.errors | json }}</pre>
