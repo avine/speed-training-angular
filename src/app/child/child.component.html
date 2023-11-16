@@ -1,0 +1,7 @@
+<p>child works! {{ data }}</p>
+
+<app-kid [data]="99" *ngIf="bool">
+  <h1 appFind>PROJECTION</h1>
+</app-kid>
+
+<button (click)="bool = false">Close</button>
